@@ -1,85 +1,105 @@
 import type { NextPage } from "next";
 import styled from "@emotion/styled";
 import { sm } from "styles/media-query";
+import NewsHeader from "components/news-header";
 
 const NewsContainer = styled.main`
   width: 100%;
   height: 100%;
   padding: 1rem;
-  border: solid 1px black;
+  max-width: 1143px;
+  margin: auto;
 `;
 
-const NewsHeader = styled.header`
+const NewsMainContainer = styled.main`
+  margin-top: 2rem;
+  height: fit-content;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+  //
+  border: solid 1px black;
+
+  ${sm} {
+    flex-direction: column;
+  }
+`;
+const NewsMainArticle = styled.article`
+  width: 70%;
+  margin-right: 2rem;
 `;
 
-const NewsLogo = styled.h1`
-  width: 70px;
-  height: 50px;
-  background-image: url("./images/logo.svg");
-  background-repeat: no-repeat;
-`;
-
-const NewsMenu = styled.nav`
+const NewsMainArticleHero = styled.section`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  list-style: none;
-
-  ${sm} {
-    display: none;
-  }
+  margin-top: 1rem;
 `;
 
-const NewsMenuMobile = styled.button`
-  width: 60px;
-  height: 60px;
-  display: none;
-
-  ${sm} {
-    display: block;
-    background-image: url("./images/icon-menu.svg");
-    background-repeat: no-repeat;
-    background-position-x: 50%;
-    background-position-y: 50%;
-
-    &:hover {
-      cursor: pointer;
-    } 
-  }
+const NewsMainArticleHeroTitle = styled.h1`
+  font-weight: 800;
+  font-size: 3.5rem;
+  width: 50%;
+  margin-right: 1rem;
 `;
 
-const NewsMenuItem = styled.li`
-  margin-left: 3rem;
+const NewsMainArticleHeroDescriptionSection = styled.section`
+width: 50%;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+`
 
-  &:hover {
-    color: var(--soft-orange);
-  }
+const NewsMainArticleHeroDescription = styled.p`
+  font-size: var(--paragraph);
+  color: var(--dark-grayish-blue);
+`;
+
+const NewsMainArticleHeroReadMore = styled.button`
+  background: var(--soft-red);
+  font-weight: 600;
+  padding: 1rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  width: fit-content;
+`;
+
+const NewsMainArticleHeroImg = styled.img`
+  width: 100%;
+  aspect-ratio: inherit;
+`;
+
+const NewsMainAside = styled.aside`
+  /* min-width: 300px; */
+  border: solid 1px black;
 `;
 
 const Home: NextPage = () => {
   return (
     <NewsContainer>
-      <NewsHeader>
-        <NewsLogo />
-        <NewsMenu>
-          <NewsMenuItem>
-            <a href="">Home</a>
-          </NewsMenuItem>
-          <NewsMenuItem>
-            <a href="">New</a>
-          </NewsMenuItem>
-          <NewsMenuItem>
-            <a href="">Popular</a>
-          </NewsMenuItem>
-          <NewsMenuItem>
-            <a href="">Categories</a>
-          </NewsMenuItem>
-        </NewsMenu>
-        <NewsMenuMobile/>
-      </NewsHeader>
+      <NewsHeader />
+      <NewsMainContainer>
+        <NewsMainArticle>
+          <figure>
+            <NewsMainArticleHeroImg src="images/image-web-3-desktop.jpg" />
+          </figure>
+          <NewsMainArticleHero>
+            <NewsMainArticleHeroTitle>
+              The Bright Future of Web 3.0?
+            </NewsMainArticleHeroTitle>
+            <NewsMainArticleHeroDescriptionSection>
+              <NewsMainArticleHeroDescription>
+                We dive into the next evolution of the web that claims to put
+                the power of the platforms back into the hands of the people.
+                But is it really fulfilling its promise?
+              </NewsMainArticleHeroDescription>
+              <NewsMainArticleHeroReadMore>
+                Read More
+              </NewsMainArticleHeroReadMore>
+            </NewsMainArticleHeroDescriptionSection>
+          </NewsMainArticleHero>
+        </NewsMainArticle>
+        <NewsMainAside></NewsMainAside>
+      </NewsMainContainer>
     </NewsContainer>
   );
 };
