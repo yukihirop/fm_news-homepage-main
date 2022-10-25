@@ -82,12 +82,8 @@ const NewsMainArticleHeroImg = styled.img`
 
 const NewsMainAside = styled.aside`
   width: 280px;
-  padding: 1rem;
   background: var(--very-dark-blue);
   color: var(--off-white);
-
-  //
-  border: solid 1px black;
 
   ${sm} {
     margin-top: 2rem;
@@ -99,20 +95,35 @@ const NewsMainAsideTitle = styled.h2`
   color: var(--soft-orange);
   font-size: 1.8rem;
   font-weight: 700;
+  padding: 1.2rem 0 0 1rem;
 `;
 
 const NewsMainAsideContent = styled.ul`
   list-style: none;
 `;
 const NewsMainAsideItem = styled.li`
+  &:hover {
+    cursor: pointer;
+    background: var(--dark-grayish-blue);
+  }
+`;
+const NewsMainAsideItemSection = styled.section`
+  width: 90%;
+  // do not disply when hover <li/>
+  margin: -0.1rem 1rem;
   padding: 1.5rem 0;
-  border-bottom: 0.1rem solid var(--dark-grayish-blue);
+  border-bottom: .1rem solid var(--dark-grayish-blue);
 
-  &:nth-last-child(1) {
+  &:hover {
+    border-bottom: none;
+  }
+
+  &:nth-of-type(2) {
     border-bottom: none;
     padding: 1.5rem 0 1rem 0;
   }
 `;
+
 const NewsMainAsideItemTitle = styled.h3`
   font-size: 1rem;
   line-height: 2rem;
@@ -166,10 +177,12 @@ const NewsMain = () => {
         <NewsMainAside>
           <NewsMainAsideTitle>New</NewsMainAsideTitle>
           <NewsMainAsideContent>
-            {news.map(({ title, desc }) => (
-              <NewsMainAsideItem>
-                <NewsMainAsideItemTitle>{title}</NewsMainAsideItemTitle>
-                <NewsMainAsideItemDesc>{desc}</NewsMainAsideItemDesc>
+            {news.map(({ title, desc }, i) => (
+              <NewsMainAsideItem key={i}>
+                <NewsMainAsideItemSection>
+                  <NewsMainAsideItemTitle>{title}</NewsMainAsideItemTitle>
+                  <NewsMainAsideItemDesc>{desc}</NewsMainAsideItemDesc>
+                </NewsMainAsideItemSection>
               </NewsMainAsideItem>
             ))}
           </NewsMainAsideContent>
