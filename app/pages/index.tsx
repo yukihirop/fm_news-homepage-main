@@ -9,6 +9,7 @@ const NewsContainer = styled.main`
   padding: 1rem;
   max-width: 986px;
   margin: auto;
+  border: 1px solid black;
 `;
 
 const Home: NextPage = () => {
