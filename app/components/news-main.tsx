@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { sm } from "styles/media-query";
+import { md } from "styles/media-query";
 import { News } from "interfaces/news";
 
 const NewsMainContainer = styled.main`
@@ -7,15 +7,15 @@ const NewsMainContainer = styled.main`
   height: fit-content;
   display: flex;
 
-  ${sm} {
+  ${md} {
     flex-direction: column;
   }
 `;
 const NewsMainArticle = styled.article`
-  width: 70%;
+  width: 67%;
   margin-right: 2rem;
 
-  ${sm} {
+  ${md} {
     width: 100%;
   }
 `;
@@ -25,7 +25,7 @@ const NewsMainArticleHero = styled.section`
   flex-direction: row;
   margin-top: 1rem;
 
-  ${sm} {
+  ${md} {
     flex-direction: column;
   }
 `;
@@ -35,10 +35,10 @@ const NewsMainArticleHeroTitle = styled.h1`
   font-size: 3.5rem;
   width: 50%;
   padding-bottom: 1rem;
-  margin-right: 1rem;
+  margin-right: 2rem;
   line-height: 3.5rem;
 
-  ${sm} {
+  ${md} {
     width: 100%;
   }
 `;
@@ -49,7 +49,7 @@ const NewsMainArticleHeroDescSection = styled.section`
   flex-direction: column;
   justify-content: space-between;
 
-  ${sm} {
+  ${md} {
     width: 100%;
   }
 `;
@@ -81,11 +81,11 @@ const NewsMainArticleHeroImg = styled.img`
 `;
 
 const NewsMainAside = styled.aside`
-  width: 280px;
+  width: 33%;
   background: var(--very-dark-blue);
   color: var(--off-white);
 
-  ${sm} {
+  ${md} {
     margin-top: 2rem;
     width: 100%;
   }
@@ -109,7 +109,6 @@ const NewsMainAsideItem = styled.li`
 `;
 const NewsMainAsideItemSection = styled.section`
   width: 90%;
-  // do not disply when hover <li/>
   margin: -0.1rem 1rem;
   padding: 1.5rem 0;
   border-bottom: .1rem solid var(--dark-grayish-blue);

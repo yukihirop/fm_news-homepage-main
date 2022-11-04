@@ -19,7 +19,7 @@ const NewsArticlesContainer = styled.section`
   display: flex;
   justify-content: space-between; 
   padding-top: 2rem;
-  gap: 1.8rem;
+  gap: 2rem;
 
   ${md} {
     flex-direction: column;
