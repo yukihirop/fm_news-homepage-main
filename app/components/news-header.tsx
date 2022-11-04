@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { sm } from 'styles/media-query'
+import { md } from 'styles/media-query'
 
 const NewsHeaderContainer = styled.header`
   display: flex;
@@ -20,7 +20,7 @@ const NewsMenu = styled.nav`
   justify-content: space-around;
   list-style: none;
 
-  ${sm} {
+  ${md} {
     display: none;
   }
 `;
@@ -30,7 +30,7 @@ const NewsMenuMobile = styled.button`
   height: 60px;
   display: none;
 
-  ${sm} {
+  ${md} {
     display: block;
     background-image: url("./images/icon-menu.svg");
     background-repeat: no-repeat;
