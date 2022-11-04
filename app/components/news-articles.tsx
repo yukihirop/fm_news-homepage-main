@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { News } from 'interfaces/news'
-import { md } from 'styles/media-query'
+import { Article } from "interfaces/article";
+import { md } from "styles/media-query";
 
 const NewsArticlesContainer = styled.section`
   width: 100%;
@@ -59,7 +59,7 @@ const NewsArticlesCardDesc = styled.p`
 `;
 
 type NewsArticlesProps = {
-  items: News[];
+  items: Article[];
 };
 
 const NewsArticles = ({ items }: NewsArticlesProps) => {
@@ -81,4 +81,4 @@ const NewsArticles = ({ items }: NewsArticlesProps) => {
   );
 };
 
-export default NewsArticles
+export default NewsArticles;

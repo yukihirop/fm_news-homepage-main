@@ -13,7 +13,12 @@ const NewsMainContainer = styled.main`
 `;
 const NewsMainArticle = styled.article`
   width: 67%;
+  height: fit-content;
   margin-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
 
   ${md} {
     width: 100%;
@@ -23,10 +28,11 @@ const NewsMainArticle = styled.article`
 const NewsMainArticleHero = styled.section`
   display: flex;
   flex-direction: row;
-  margin-top: 1rem;
+  height: 200px;
 
   ${md} {
     flex-direction: column;
+    height: 100%;
   }
 `;
 
@@ -72,6 +78,7 @@ const NewsMainArticleHeroReadMore = styled.button`
 
   &:hover {
     background: var(--very-dark-blue);
+    cursor: pointer;
   }
 `;
 
@@ -81,7 +88,8 @@ const NewsMainArticleHeroImg = styled.img`
 `;
 
 const NewsMainAside = styled.aside`
-  width: 33%;
+  width: 32%;
+  height: fit-content;
   background: var(--very-dark-blue);
   color: var(--off-white);
 
@@ -95,7 +103,7 @@ const NewsMainAsideTitle = styled.h2`
   color: var(--soft-orange);
   font-size: 1.8rem;
   font-weight: 700;
-  padding: 1.2rem 0 0 1rem;
+  padding: 1.2rem 0 1rem 1rem;
 `;
 
 const NewsMainAsideContent = styled.ul`
@@ -106,21 +114,17 @@ const NewsMainAsideItem = styled.li`
     cursor: pointer;
     background: var(--dark-grayish-blue);
   }
+
+  &:nth-of-type(3) section {
+    border-bottom: none;
+    padding: 1.5rem 0 1rem 0;
+  }
 `;
 const NewsMainAsideItemSection = styled.section`
   width: 90%;
   margin: -0.1rem 1rem;
   padding: 1.5rem 0;
-  border-bottom: .1rem solid var(--dark-grayish-blue);
-
-  &:hover {
-    border-bottom: none;
-  }
-
-  &:nth-of-type(2) {
-    border-bottom: none;
-    padding: 1.5rem 0 1rem 0;
-  }
+  border-bottom: 0.1rem solid var(--dark-grayish-blue);
 `;
 
 const NewsMainAsideItemTitle = styled.h3`
@@ -132,24 +136,14 @@ const NewsMainAsideItemDesc = styled.p`
   opacity: 0.8;
   font-size: 0.8rem;
   line-height: 1.5rem;
+  margin-top: 1rem;
 `;
 
-const NewsMain = () => {
-  const news: News[] = [
-    {
-      title: "Hydrogen VS Electric Cars",
-      desc: "Will hydrogen-fueled cars ever catch up to EVs?",
-    },
-    {
-      title: "The Downsides of AI Artistry",
-      desc: "What are the possible adverse effects of on-demand All image generation?",
-    },
-    {
-      title: "Is VC Funding Drying Up?",
-      desc: "Private funding by VC firms is down 50% YOY. We take a look at what that means.",
-    },
-  ];
+type NewsMainProps = {
+  items: News[];
+};
 
+const NewsMain = ({ items }: NewsMainProps) => {
   return (
     <>
       <NewsMainContainer>
@@ -176,7 +170,7 @@ const NewsMain = () => {
         <NewsMainAside>
           <NewsMainAsideTitle>New</NewsMainAsideTitle>
           <NewsMainAsideContent>
-            {news.map(({ title, desc }, i) => (
+            {items.map(({ title, desc }, i) => (
               <NewsMainAsideItem key={i}>
                 <NewsMainAsideItemSection>
                   <NewsMainAsideItemTitle>{title}</NewsMainAsideItemTitle>

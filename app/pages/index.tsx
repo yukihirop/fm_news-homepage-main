@@ -2,8 +2,9 @@ import type { NextPage } from "next";
 import styled from "@emotion/styled";
 import NewsHeader from "components/news-header";
 import NewsMain from "components/news-main";
-import NewsArticles from 'components/news-articles'
+import NewsArticles from "components/news-articles";
 import { News } from "interfaces/news";
+import { Article } from "interfaces/article";
 
 const NewsContainer = styled.main`
   width: 100%;
@@ -18,24 +19,28 @@ export async function getServerSideProps() {
     ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
     : "http://localhost:3000";
   const res = await fetch(`${baseURL}/api/news`);
-  const items = await res.json();
+  const news = await res.json();
+  const res2 = await fetch(`${baseURL}/api/articles`);
+  const articles = await res2.json();
   return {
     props: {
-      items,
+      news,
+      articles,
     },
   };
 }
 
 type Props = {
-  items: News[];
+  news: News[];
+  articles: Article[];
 };
 
-const Home: NextPage<Props> = ({ items }: Props) => {
+const Home: NextPage<Props> = ({ news, articles }: Props) => {
   return (
     <NewsContainer>
       <NewsHeader />
-      <NewsMain />
-      <NewsArticles items={items} />
+      <NewsMain items={news} />
+      <NewsArticles items={articles} />
     </NewsContainer>
   );
 };
