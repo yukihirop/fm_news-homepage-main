@@ -121,7 +121,6 @@ const NewsMainAsideItem = styled.li`
   }
 `;
 const NewsMainAsideItemSection = styled.section`
-  width: 90%;
   margin: -0.1rem 1rem;
   padding: 1.5rem 0;
   border-bottom: 0.1rem solid var(--dark-grayish-blue);

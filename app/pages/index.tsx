@@ -6,11 +6,12 @@ import NewsArticles from "components/news-articles";
 import { News } from "interfaces/news";
 import { Article } from "interfaces/article";
 
-const NewsContainer = styled.main`
+const NewsContainer = styled.div`
   width: 100%;
-  height: 100%;
-  padding: 1rem;
   max-width: 986px;
+  height: fit-content;
+  min-height: 780px;
+  padding: 1rem;
   margin: auto;
 `;
 
@@ -37,11 +38,13 @@ type Props = {
 
 const Home: NextPage<Props> = ({ news, articles }: Props) => {
   return (
-    <NewsContainer>
-      <NewsHeader />
-      <NewsMain items={news} />
-      <NewsArticles items={articles} />
-    </NewsContainer>
+    <main>
+      <NewsContainer>
+        <NewsHeader />
+        <NewsMain items={news} />
+        <NewsArticles items={articles} />
+      </NewsContainer>
+    </main>
   );
 };
 

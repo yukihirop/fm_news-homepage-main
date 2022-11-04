@@ -45,6 +45,7 @@ const NewsMenuMobile = styled.button`
 
 const NewsMenuItem = styled.li`
   margin-left: 3rem;
+  color: var(--dark-grayish-blue);
 
   &:hover {
     color: var(--soft-orange);

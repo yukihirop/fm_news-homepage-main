@@ -5,7 +5,6 @@ import { md } from "styles/media-query";
 
 const NewsArticlesContainer = styled.section`
   width: 100%;
-  height: 300px;
   display: flex;
   justify-content: space-between;
   padding-top: 2rem;
