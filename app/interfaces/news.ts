@@ -1,4 +1,6 @@
 export interface News {
-  title: string
-  desc: string
+  index: number;
+  title: string;
+  desc: string;
+  image: string;
 }
