@@ -58,11 +58,48 @@ const NewsMobileMenu = styled.button`
     background-repeat: no-repeat;
     background-position-x: 50%;
     background-position-y: 50%;
-    transform: all 0.3s ease-in-out;
+    z-index: 9999;
 
     &:hover {
       cursor: pointer;
     }
+  }
+`;
+
+const NewsMobileOverlay = styled.div`
+  display: none;
+
+  ${md} {
+    background-color: var(--dark-grayish-blue);
+    opacity: 0.7;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+type NewsMobileSlideProps = {
+  close: boolean;
+};
+
+const NewsMobileSlide = styled.div`
+  display: none;
+
+  ${md} {
+    display: block;
+    width: 70%;
+    height: 100vh;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: all 0.3s ease-in-out;
+    background-color: whitesmoke;
+    z-index: 1000;
+    opacity: 1;
+    transform: ${(props: NewsMobileSlideProps) =>
+      props.close ? "translateX(0)" : "translateX(100%)"};
+    transition: 0.3s;
   }
 `;
 
@@ -75,6 +112,10 @@ const NewsMenu = () => {
         onClick={() => setClose(!close)}
         bg={close ? "./images/icon-menu-close.svg" : "./images/icon-menu.svg"}
       />
+      <>
+        <NewsMobileOverlay />
+        <NewsMobileSlide close={close} />
+      </>
     </>
   );
 };
