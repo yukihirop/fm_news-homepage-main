@@ -104,6 +104,7 @@ const NewsMobileOverlay = styled.div`
   display: none;
 
   ${md} {
+    display: block;
     background-color: var(--dark-grayish-blue);
     opacity: 0.7;
     position: absolute;
@@ -114,7 +115,7 @@ const NewsMobileOverlay = styled.div`
 `;
 
 type NewsMobileSlideProps = {
-  close: boolean;
+  open: boolean;
 };
 
 const NewsMobileSlide = styled.div`
@@ -132,23 +133,30 @@ const NewsMobileSlide = styled.div`
     z-index: 1000;
     opacity: 1;
     transform: ${(props: NewsMobileSlideProps) =>
-      props.close ? "translateX(0)" : "translateX(100%)"};
+      props.open ? "translateX(0)" : "translateX(100%)"};
     transition: 0.3s;
   }
 `;
 
 const NewsMenu = () => {
-  const [close, setClose] = useState(false);
+  const [open, setOpen] = useState(false);
   return (
     <>
       <NewsDesktopMenu />
       <NewsMobileBurgerMenu
-        onClick={() => setClose(!close)}
-        bg={close ? "./images/icon-menu-close.svg" : "./images/icon-menu.svg"}
+        onClick={() => {
+          if (open) {
+            document.body.style.overflow = "auto";
+          } else {
+            document.body.style.overflow = "hidden";
+          }
+          setOpen(!open);
+        }}
+        bg={open ? "./images/icon-menu-close.svg" : "./images/icon-menu.svg"}
       />
       <>
-        <NewsMobileOverlay />
-        <NewsMobileSlide close={close}>
+        {open && <NewsMobileOverlay />}
+        <NewsMobileSlide open={open}>
           <NewsMobileMenu />
         </NewsMobileSlide>
       </>
