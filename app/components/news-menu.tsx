@@ -6,48 +6,82 @@ import { md } from "styles/media-query";
  * @see https://css-tricks.com/hamburger-menu-with-a-side-of-react-hooks-and-styled-components/
  */
 
-const NewsDesktopMenuContainer = styled.div`
+const NewsMenuItem = styled.li`
+  color: var(--dark-grayish-blue);
+  &:hover {
+    color: var(--soft-orange);
+  }
+`;
+
+const NewsDesktopMenuContainer = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   list-style: none;
+
+  ${NewsMenuItem} {
+    margin-left: 3rem;
+  }
 
   ${md} {
     display: none;
   }
 `;
 
-const NewsDesktopMenuItem = styled.li`
-  margin-left: 3rem;
-  color: var(--dark-grayish-blue);
+const NewsDesktopMenu = () => (
+  <NewsDesktopMenuContainer>
+    <NewsMenuItem>
+      <a href="">Home</a>
+    </NewsMenuItem>
+    <NewsMenuItem>
+      <a href="">New</a>
+    </NewsMenuItem>
+    <NewsMenuItem>
+      <a href="">Popular</a>
+    </NewsMenuItem>
+    <NewsMenuItem>
+      <a href="">Categories</a>
+    </NewsMenuItem>
+  </NewsDesktopMenuContainer>
+);
 
-  &:hover {
-    color: var(--soft-orange);
+const NewsMobileMenuContainer = styled.nav`
+  margin-top: 10rem;
+  margin-left: 2rem;
+  height: 100vh;
+  list-style: none;
+
+  ${NewsMenuItem} {
+    margin-top: 1rem;
+    font-size: 1.5rem;
   }
 `;
 
-const NewsDesktopMenu = () => (
-  <NewsDesktopMenuContainer>
-    <NewsDesktopMenuItem>
+const NewsMobileMenu = () => (
+  <NewsMobileMenuContainer>
+    <NewsMenuItem>
       <a href="">Home</a>
-    </NewsDesktopMenuItem>
-    <NewsDesktopMenuItem>
+    </NewsMenuItem>
+    <NewsMenuItem>
       <a href="">New</a>
-    </NewsDesktopMenuItem>
-    <NewsDesktopMenuItem>
+    </NewsMenuItem>
+    <NewsMenuItem>
       <a href="">Popular</a>
-    </NewsDesktopMenuItem>
-    <NewsDesktopMenuItem>
+    </NewsMenuItem>
+    <NewsMenuItem>
+      <a href="">Trending</a>
+    </NewsMenuItem>
+    <NewsMenuItem>
       <a href="">Categories</a>
-    </NewsDesktopMenuItem>
-  </NewsDesktopMenuContainer>
+    </NewsMenuItem>
+  </NewsMobileMenuContainer>
 );
 
 type NewsMobileMenuProps = {
   bg: string;
 };
 
-const NewsMobileMenu = styled.button`
+const NewsMobileBurgerMenu = styled.button`
   width: 60px;
   height: 60px;
   display: none;
@@ -108,13 +142,15 @@ const NewsMenu = () => {
   return (
     <>
       <NewsDesktopMenu />
-      <NewsMobileMenu
+      <NewsMobileBurgerMenu
         onClick={() => setClose(!close)}
         bg={close ? "./images/icon-menu-close.svg" : "./images/icon-menu.svg"}
       />
       <>
         <NewsMobileOverlay />
-        <NewsMobileSlide close={close} />
+        <NewsMobileSlide close={close}>
+          <NewsMobileMenu />
+        </NewsMobileSlide>
       </>
     </>
   );
