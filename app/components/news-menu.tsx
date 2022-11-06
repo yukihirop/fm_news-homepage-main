@@ -40,6 +40,9 @@ const NewsDesktopMenu = () => (
       <a href="">Popular</a>
     </NewsMenuItem>
     <NewsMenuItem>
+      <a href="">Trending</a>
+    </NewsMenuItem>
+    <NewsMenuItem>
       <a href="">Categories</a>
     </NewsMenuItem>
   </NewsDesktopMenuContainer>
@@ -123,7 +126,7 @@ const NewsMobileSlide = styled.div`
 
   ${md} {
     display: block;
-    width: 70%;
+    width: ${({ open }: NewsMobileSlideProps) => (open ? "70%" : "0px")};
     height: 100vh;
     position: absolute;
     right: 0;
@@ -157,7 +160,7 @@ const NewsMenu = () => {
       <>
         {open && <NewsMobileOverlay />}
         <NewsMobileSlide open={open}>
-          <NewsMobileMenu />
+          {open && <NewsMobileMenu />}
         </NewsMobileSlide>
       </>
     </>
