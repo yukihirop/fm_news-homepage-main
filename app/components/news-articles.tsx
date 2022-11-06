@@ -64,8 +64,8 @@ type NewsArticlesProps = {
 const NewsArticles = ({ items }: NewsArticlesProps) => {
   return (
     <NewsArticlesContainer>
-      {items.map((item) => (
-        <NewsArticlesCard>
+      {items.map((item, index) => (
+        <NewsArticlesCard key={index}>
           <figure>
             <NewsArticlesCardImage src={item.image}></NewsArticlesCardImage>
           </figure>
