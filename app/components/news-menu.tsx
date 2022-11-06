@@ -149,9 +149,9 @@ const NewsMenu = () => {
       <NewsMobileBurgerMenu
         onClick={() => {
           if (open) {
-            document.body.style.overflow = "auto";
+            document.body.classList.remove("overlay");
           } else {
-            document.body.style.overflow = "hidden";
+            document.body.classList.add("overlay")
           }
           setOpen(!open);
         }}

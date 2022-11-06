@@ -8,6 +8,10 @@
   --paragraph: 15px;
 }
 
+html {
+  height: 100vh;
+}
+
 html,
 body {
   padding: 0;
@@ -44,6 +48,12 @@ main {
   height: 100vh;
   display: grid;
   justify-content: center;
+}
+
+.overlay {
+  position: fixed;
+  overflow: hidden;
+  inset: 0px;
 }
 
 @media (prefers-color-scheme: dark) {
