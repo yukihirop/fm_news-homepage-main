@@ -13,7 +13,7 @@ const NewsMenuItem = styled.li`
   }
 `;
 
-const NewsDesktopMenuContainer = styled.nav`
+const NewsDesktopMenuContainer = styled.ul`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -48,11 +48,11 @@ const NewsDesktopMenu = () => (
   </NewsDesktopMenuContainer>
 );
 
-const NewsMobileMenuContainer = styled.nav`
+const NewsMobileMenuContainer = styled.ul`
   margin-top: 10rem;
   margin-left: 2rem;
-  height: 100vh;
   list-style: none;
+  height: 100%;
 
   ${NewsMenuItem} {
     margin-top: 1rem;
