@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
-import { md } from 'styles/media-query'
+import styled from "@emotion/styled";
+import NewsMenu from "components/news-menu";
 
 const NewsHeaderContainer = styled.header`
   display: flex;
@@ -14,63 +14,13 @@ const NewsLogo = styled.h1`
   background-repeat: no-repeat;
 `;
 
-const NewsMenu = styled.nav`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  list-style: none;
+const NewsHeader = () => {
+  return (
+    <NewsHeaderContainer>
+      <NewsLogo />
+      <NewsMenu />
+    </NewsHeaderContainer>
+  );
+};
 
-  ${md} {
-    display: none;
-  }
-`;
-
-const NewsMenuMobile = styled.button`
-  width: 60px;
-  height: 60px;
-  display: none;
-
-  ${md} {
-    display: block;
-    background-image: url("./images/icon-menu.svg");
-    background-repeat: no-repeat;
-    background-position-x: 50%;
-    background-position-y: 50%;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-`;
-
-const NewsMenuItem = styled.li`
-  margin-left: 3rem;
-  color: var(--dark-grayish-blue);
-
-  &:hover {
-    color: var(--soft-orange);
-  }
-`;
-
-const NewsHeader = () => (
-  <NewsHeaderContainer>
-    <NewsLogo />
-    <NewsMenu>
-      <NewsMenuItem>
-        <a href="">Home</a>
-      </NewsMenuItem>
-      <NewsMenuItem>
-        <a href="">New</a>
-      </NewsMenuItem>
-      <NewsMenuItem>
-        <a href="">Popular</a>
-      </NewsMenuItem>
-      <NewsMenuItem>
-        <a href="">Categories</a>
-      </NewsMenuItem>
-    </NewsMenu>
-    <NewsMenuMobile />
-  </NewsHeaderContainer>
-);
-
-export default NewsHeader
+export default NewsHeader;
