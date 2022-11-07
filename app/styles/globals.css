@@ -60,11 +60,6 @@ main {
   overflow: hidden;
 }
 
-figure {
-  width: fit-content;
-  height: fit-content;
-}
-
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

@@ -33,6 +33,8 @@ const NewsArticlesCard = styled.article`
 
 const NewsArticlesCardImage = styled.img`
   height: 100%;
+  object-fit: contain;
+  aspect-ratio: calc(79/100);
 `;
 const NewArticlesCardSection = styled.section`
   display: flex;
