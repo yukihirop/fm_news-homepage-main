@@ -23,6 +23,7 @@ const NewsArticlesCard = styled.article`
 
   ${md} {
     width: 100%;
+    justify-content: flex-start;
   }
 
   &:hover {
@@ -39,10 +40,6 @@ const NewArticlesCardSection = styled.section`
   justify-content: space-around;
   margin-left: 1rem;
   gap: 0.5rem;
-
-  ${md} {
-    justify-content: flex-start;
-  }
 `;
 
 const NewsArticlesCardIndex = styled.div`
