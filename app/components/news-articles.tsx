@@ -1,19 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 import { Article } from "interfaces/article";
 import { md } from "styles/media-query";
-
-const NewsArticlesContainer = styled.section`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding-top: 2rem;
-  gap: 2rem;
-
-  ${md} {
-    flex-direction: column;
-  }
-`;
 
 const NewsArticlesCard = styled.article`
   width: 33%;
@@ -24,6 +13,10 @@ const NewsArticlesCard = styled.article`
   ${md} {
     width: 100%;
     justify-content: flex-start;
+
+    &:not(:nth-child(1)) {
+      margin-top: 2rem;
+    }
   }
 
   &:hover {
@@ -31,10 +24,21 @@ const NewsArticlesCard = styled.article`
   }
 `;
 
+const NewsArticlesContainer = styled.section`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2rem;
+
+  ${md} {
+    flex-direction: column;
+  }
+`;
+
 const NewsArticlesCardImage = styled.img`
   height: 100%;
   object-fit: contain;
-  aspect-ratio: calc(79/100);
+  aspect-ratio: calc(79 / 100);
 `;
 const NewArticlesCardSection = styled.section`
   display: flex;
@@ -69,7 +73,7 @@ const NewsArticles = ({ items }: NewsArticlesProps) => {
     <NewsArticlesContainer>
       {items.map((item, index) => (
         <NewsArticlesCard key={index}>
-          <figure>
+          <figure css={iosSafariFigure}>
             <NewsArticlesCardImage src={item.image}></NewsArticlesCardImage>
           </figure>
           <NewArticlesCardSection>
@@ -84,3 +88,8 @@ const NewsArticles = ({ items }: NewsArticlesProps) => {
 };
 
 export default NewsArticles;
+
+const iosSafariFigure = css`
+  width: 79px;
+  height: 100px;
+`;
