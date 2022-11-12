@@ -33,6 +33,7 @@ const NewsArticlesContainer = styled.section`
 
   ${md} {
     flex-direction: column;
+    gap: 0rem;
   }
 `;
 
